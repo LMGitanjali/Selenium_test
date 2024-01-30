@@ -21,7 +21,7 @@ public class TC004_Select_DropDown {
 		
 		driver.findElement(By.linkText("Desktops")).click();
 		driver.findElement(By.linkText("Mac (1)")).click();
-		Select sl = new Select(driver.findElement(By.id("input-sort")));
+		Select sl = new Select(driver.findElement(By.id("input-sort")));//select for dropdown
 		List<WebElement> l1 = sl.getOptions();
 		
 		for(int i=0; i<l1.size();i++) {

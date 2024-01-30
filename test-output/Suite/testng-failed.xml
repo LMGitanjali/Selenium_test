@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="3" parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="3" parallel="tests" name="Chrome_Test(failed)">
-    <parameter name="Browser" value="chrome"/>
-    <classes>
-      <class name="assi3.Luma_Booking3">
-        <methods>
-          <include name="beforeSuite"/>
-          <include name="beforeMethod"/>
-          <include name="f"/>
-          <include name="beforeTest"/>
-          <include name="afterSuite"/>
-          <include name="beforeClass"/>
-          <include name="afterTest"/>
-          <include name="afterMethod"/>
-          <include name="afterClass"/>
-        </methods>
-      </class> <!-- assi3.Luma_Booking3 -->
-    </classes>
-  </test> <!-- Chrome_Test(failed) -->
   <test thread-count="3" parallel="tests" name="Edge_Test(failed)">
     <parameter name="Browser" value="edge"/>
     <classes>
@@ -26,7 +8,7 @@
         <methods>
           <include name="beforeSuite"/>
           <include name="beforeMethod"/>
-          <include name="f"/>
+          <include name="f" invocation-numbers="1"/>
           <include name="beforeTest"/>
           <include name="afterSuite"/>
           <include name="beforeClass"/>
@@ -44,7 +26,7 @@
         <methods>
           <include name="beforeSuite"/>
           <include name="beforeMethod"/>
-          <include name="f"/>
+          <include name="f" invocation-numbers="0"/>
           <include name="beforeTest"/>
           <include name="afterSuite"/>
           <include name="beforeClass"/>

@@ -11,12 +11,14 @@ import java.util.Properties;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -36,19 +38,22 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Luma_Booking3 {
+public class Luma_Booking3_para {
 	WebDriver driver;
 	  @Test(dataProvider = "dp")
 	  public void f(String fname, String lname) throws Exception {
-		  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		  
+		  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		  Luma_Login_POM obj = new Luma_Login_POM(driver);
 		  long timestamp = new Date().getTime();
 		  System.out.println("The time is: "+timestamp);
+		  Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		  String browserName = cap.getBrowserName().toLowerCase();
 		  
 		  ExtentReports extent=new ExtentReports();
-			ExtentSparkReporter spark=new ExtentSparkReporter(timestamp+"luma3.html");
+			ExtentSparkReporter spark=new ExtentSparkReporter(timestamp+"parallelbrowsr.html");
 			extent.attachReporter(spark);
-			ExtentTest test=extent.createTest("Verify the Title of Luma");
+			ExtentTest test=extent.createTest("Checking Parallel Browsing: "+browserName);
 			obj.gotologin();
 			String title=driver.getTitle();
 			System.out.println("Title: "+title);
@@ -62,7 +67,7 @@ public class Luma_Booking3 {
 		  {
 			  Thread.sleep(3000);
 			  File sfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			  File dfile = new File("s1.png");
+			  File dfile = new File("lumatitle.png");
 			  FileUtils.copyFile(sfile, dfile);
 			  String path = dfile.getAbsolutePath();
 			  test.fail("Luma title is not displayed"
@@ -80,7 +85,7 @@ public class Luma_Booking3 {
 		  {
 			  Thread.sleep(3000);
 			  File sfile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			  File dfile1 = new File("userverify3.png");
+			  File dfile1 = new File("userverify.png");
 			  FileUtils.copyFile(sfile1, dfile1);
 			  String path1 = dfile1.getAbsolutePath();
 			  test.fail("Username is not displayed"
@@ -98,7 +103,7 @@ public class Luma_Booking3 {
 		  {
 			  Thread.sleep(3000);
 			  File sfile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			  File dfile2 = new File("passverify3.png");
+			  File dfile2 = new File("passverify.png");
 			  FileUtils.copyFile(sfile2, dfile2);
 			  String path2 = dfile2.getAbsolutePath();
 			  test.fail("password is not displayed"
@@ -120,7 +125,7 @@ public class Luma_Booking3 {
 		  {
 			  Thread.sleep(3000);
 			  File sfile3 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			  File dfile3 = new File("verifylogin3.png");
+			  File dfile3 = new File("verifylogin.png");
 			  FileUtils.copyFile(sfile3, dfile3);
 			  String path3 = dfile3.getAbsolutePath();
 			  test.fail("Login not Successful"
@@ -134,14 +139,15 @@ public class Luma_Booking3 {
 		  obj.selectsize();
 		  obj.selectclr();
 		  obj.addtocart();
-		  obj.checkcart();
 		  Thread.sleep(3000);
+		  obj.checkcart();
+		  Thread.sleep(5000);
 		  if(obj.checkitem()) {
 			  test.pass("item added");
 		  }else {
 			  Thread.sleep(3000);
 			  File sfile4 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			  File dfile4 = new File("verifylogin4.png");
+			  File dfile4 = new File("verifylogin.png");
 			  FileUtils.copyFile(sfile4, dfile4);
 			  String path4 = dfile4.getAbsolutePath();
 			  test.fail("Login not Successful"
@@ -159,7 +165,7 @@ public class Luma_Booking3 {
 	  @BeforeMethod
 	  public void beforeMethod(String browsername) throws Exception {
 		  System.out.println("This is before method");
-			 InputStream input1 = new FileInputStream("D:\\Eclipse_training\\Java2024_Selenium\\src\\test\\java\\assi3\\luma.properties");
+			 InputStream input1 = new FileInputStream("D:\\Eclipse_training\\Java2024_Selenium\\src\\test\\java\\assi3\\luma3.properties");
 				Properties prob = new Properties();
 				prob.load(input1);
 				String url = prob.getProperty("url");
@@ -242,4 +248,3 @@ public class Luma_Booking3 {
 	  }
 
 }
-

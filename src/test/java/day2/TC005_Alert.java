@@ -35,6 +35,4 @@ public class TC005_Alert {
 		promptAlert.accept();
 		System.out.println(driver.findElement(By.id("myName")).getText());
 		}
-	
-
 }

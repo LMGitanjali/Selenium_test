@@ -5,21 +5,21 @@
   <test  name="Edge_Test">
 	  <parameter name="Browser" value="edge"></parameter>
     <classes>
-      <class name="assi3.Luma_Booking3"/>
+      <class name="assi3.Luma_Booking3_para"/>
     </classes>
   </test> <!-- Test -->
   
    <test  name="Firefox_Test">
 	  <parameter name="Browser" value="firefox"></parameter>
     <classes>
-      <class name="assi3.Luma_Booking3"/>
+      <class name="assi3.Luma_Booking3_para"/>
     </classes>
   </test> <!-- Test -->
   
    <test  name="Chrome_Test">
 	  <parameter name="Browser" value="chrome"></parameter>
     <classes>
-      <class name="assi3.Luma_Booking3"/>
+      <class name="assi3.Luma_Booking3_para"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

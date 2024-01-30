@@ -42,7 +42,7 @@ public class Luma_Booking {
 		  System.out.println("The time is: "+timestamp);
 		  
 		  ExtentReports extent=new ExtentReports();
-			ExtentSparkReporter spark=new ExtentSparkReporter(timestamp+"luma2.html");
+			ExtentSparkReporter spark=new ExtentSparkReporter(timestamp+"booking.html");
 			extent.attachReporter(spark);
 			ExtentTest test=extent.createTest("Verify the Title of Luma");
 			obj.gotologin();
@@ -154,7 +154,7 @@ public class Luma_Booking {
 	  @BeforeMethod
 	  public void beforeMethod() throws Exception {
 		  System.out.println("This is before method");
-			 InputStream input1 = new FileInputStream("D:\\Training\\Eclipse\\Jan2024_SeleniumClass\\src\\test\\java\\TestCase\\luma.properties");
+			 InputStream input1 = new FileInputStream("D:\\Eclipse_training\\Java2024_Selenium\\src\\test\\java\\assi2\\luma2.properties");
 				Properties prob = new Properties();
 				prob.load(input1);
 				String url = prob.getProperty("url");
@@ -190,7 +190,7 @@ public class Luma_Booking {
 
 	  @DataProvider
 	  public Object[][] dp() throws Exception {
-		  File f1 = new File("D:\\Training\\Eclipse\\Jan2024_SeleniumClass\\LumaLogin.xlsx");
+		  File f1 = new File("D:\\Eclipse_training\\Java2024_Selenium\\luma_login.xlsx");
 	      FileInputStream fis = new FileInputStream(f1);
 			XSSFWorkbook workbook = new XSSFWorkbook(fis);
 			XSSFSheet sheet = workbook.getSheetAt(0);
